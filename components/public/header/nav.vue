@@ -99,9 +99,57 @@
           </dl>
           <dl class="movie">
             <dt>看电影</dt>
+            <dd>热映电影</dd>
+            <dd>热门影院</dd>
+            <dd>热映电影口碑榜</dd>
+            <dd>最受期待电影</dd>
+            <dd>国内票房榜</dd>
+            <dd>北美票房榜</dd>
+            <dd>电影排行榜</dd>
           </dl>
           <dl class="app">
             <dt>手机应用</dt>
+            <dd>
+              <a href="#">
+                <img
+                  src="@/assets/img/meituan.png"
+                  title="美团app"
+                  alt="美团app"
+                />
+              </a>
+            </dd>
+            <dd>
+              <a href="#">
+                <img
+                  src="@/assets/img/waimai.png"
+                  title="外卖app"
+                  alt="外卖app"
+                />
+              </a>
+            </dd>
+            <dd>
+              <a href="#">
+                <img
+                  src="@/assets/img/zhenguo.png"
+                  title="榛果app"
+                  alt="榛果app"
+                />
+              </a>
+            </dd>
+            <dd>
+              <a href="#">
+                <img
+                  src="@/assets/img/dianping.png"
+                  title="点评app"
+                  alt="点评app"
+                />
+              </a>
+            </dd>
+            <dd>
+              <a href="#">
+                <img src="@/assets/img/maoyan.png" alt="猫眼app" />
+              </a>
+            </dd>
           </dl>
         </div>
       </li>
