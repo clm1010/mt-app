@@ -70,6 +70,6 @@ module.exports = {
         })
       }
     },
-    cache: true
+    cache: false
   }
 }

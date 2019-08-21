@@ -11,9 +11,7 @@
 <script>
 export default {
   data() {
-    return {
-      ss: ''
-    }
+    return {}
   }
 }
 </script>

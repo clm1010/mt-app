@@ -1,16 +1,18 @@
-.m-header{
-  @at-root .el-header{
-    .m-header.m-header-topbar{
-      width: 1190px!important;
+.m-header {
+  @at-root .el-header {
+    .m-header.m-header-topbar {
+      width: 1190px !important;
       z-index: 9999;
       height: 40px;
       line-height: 40px;
       z-index: 9;
     }
   }
+
   .m-geo {
     color: #666;
     font-size: 12px;
+
     .changeCity {
       background: #F4F4F4;
       border: 1px solid #E5E5E5;
@@ -18,38 +20,46 @@
       color: #666;
       margin: 0 4px;
       padding: 0 2px;
+
       &:hover {
         color: #31BBAC;
       }
     }
+
     .username {
       color: #31BBAC;
       cursor: pointer;
     }
+
     .login,
     .register {
       font-size: 12px;
       line-height: 40px;
       color: #999;
       margin: 0 5px;
+
       &.login {
         color: #31BBAC;
         margin: 0 5px 0 20px;
       }
+
       &:hover {
         color: #31BBAC;
       }
     }
   }
-  .m-nav{
+
+  .m-nav {
     float: right;
     margin: 0;
     padding: 0;
     z-index: 999;
+
     .nav {
       list-style: none;
       float: right;
       height: 40px;
+
       >li {
         float: left;
         width: 78px;
@@ -178,7 +188,8 @@
 
             &.movie {
               width: 90px;
-              dd{
+
+              dd {
                 width: 100%;
               }
             }
@@ -187,12 +198,14 @@
               width: 380px;
               flex: 1;
               text-align: center;
+
               dd {
                 width: 60px;
                 height: 73px;
                 line-height: 73px;
                 text-align: center;
                 margin: 0 8px;
+
                 img {
                   width: 60px;
                   height: 60px;
