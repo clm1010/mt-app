@@ -13,6 +13,7 @@
             placeholder="搜索商家或地点"
             @focus="handleFocus"
             @blur="handleBlur"
+            @input="handleInput"
           ></el-input>
           <button class="el-button el-button--primary">
             <i class="el-icon-search" />
@@ -104,6 +105,9 @@ export default {
       setTimeout(() => {
         self.isFocus = false
       }, 200)
+    },
+    handleInput() {
+      console.log('input')
     }
   }
 }

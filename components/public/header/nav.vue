@@ -147,7 +147,11 @@
             </dd>
             <dd>
               <a href="#">
-                <img src="@/assets/img/maoyan.png" alt="猫眼app" />
+                <img
+                  src="@/assets/img/maoyan.png"
+                  title="猫眼app"
+                  alt="猫眼app"
+                />
               </a>
             </dd>
           </dl>
