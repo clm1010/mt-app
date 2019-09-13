@@ -113,4 +113,8 @@ export default {
 }
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.el-icon-search {
+  color: #000000;
+}
+</style>

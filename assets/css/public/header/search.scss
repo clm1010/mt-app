@@ -22,7 +22,8 @@
 
       .wrapper {
         margin-top: 16px;
-        border: 1px solid #13D1BE;
+        // border: 1px solid #13D1BE;
+        border: 1px solid #E5E5E5;
         border-radius: 4px;
         width: 552px;
         box-sizing: border-box;
@@ -40,13 +41,15 @@
         }
 
         .el-button {
-          width: 88px;
+          width: 85px;
           border: none;
-          background: #13D1BE;
+          // background-color: #13D1BE;
+          background-color: #FFC300;
           font-size: 16px;
           border-top-left-radius: 0;
           border-bottom-left-radius: 0;
           vertical-align: -1px;
+          color: #000000;
 
           i {
             font-weight: bold;
@@ -85,7 +88,8 @@
 
             &:hover {
               background: #F8F8F8;
-              color: #31BBAC;
+              // color: #31BBAC;
+              color: #FE8C00;
             }
           }
 
@@ -176,7 +180,8 @@
           &:after {
             font-family: iconfont;
             font-size: 36px;
-            color: #13D1BE;
+            // color: #13D1BE;
+            color: #FFC300;
           }
         }
 

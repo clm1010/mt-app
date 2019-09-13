@@ -17,6 +17,7 @@
 import TopBar from './topbar'
 import SearchBar from './searchbar'
 export default {
+  name: 'MyHeader',
   components: {
     TopBar,
     SearchBar

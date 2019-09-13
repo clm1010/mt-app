@@ -1,6 +1,6 @@
 .page-register {
   .header {
-    border-bottom: 2px solid #2bb8aa;
+    border-bottom: 2px solid #D8D8D8;
     min-width: 980px;
     color: #666;
 
@@ -12,15 +12,26 @@
       .site-logo {
         display: inline-block;
         width: 128px;
-        width: 54px;
         height: 36px;
-        text-indent: -9999px;
-        background-position: -669px -748px;
-        background-image: url(//s0.meituan.net/bs/file/?f=fe-sso-fs:build/assets/sp-normal.2ee5c09.png);
+        background-image: url(//s0.meituan.net/bs/file/?f=fe-sso-fs:build/assets/logo.6a89007.png);
+        background-repeat: no-repeat;
+        background-size: contain;
       }
 
       .login {
         float: right;
+
+        a {
+          color: #666666;
+        }
+
+        .el-button {
+          background-image: linear-gradient(135deg, #FFD000 0, #FFBD00 100%);
+
+          &:hover {
+            color: #666666
+          }
+        }
       }
 
       .bold {
@@ -45,6 +56,11 @@
 
     .error {
       color: red;
+    }
+
+    a {
+      margin-left: 95px;
+      color: #FE8C00;
     }
   }
 }

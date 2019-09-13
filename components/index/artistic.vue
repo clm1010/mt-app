@@ -19,7 +19,7 @@
       </dd>
     </dl>
     <ul class="ibody">
-      <li v-for="item in cur" :key="item.title">
+      <li v-for="(item, curIndex) in cur" :key="curIndex">
         <el-card :body-style="{ padding: '0px' }" shadow="never">
           <img :src="item.src" :alt="item.title" class="image" />
           <ul class="cbody">

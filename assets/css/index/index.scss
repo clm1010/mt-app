@@ -5,11 +5,13 @@
     box-sizing: border-box;
     margin-top: -50px;
     margin-left: 20px;
-    color: #FFF;
+    color: #646464;
     position: relative;
-    background: linear-gradient(-180deg, rgba(2, 181, 157, .85) 2%, rgba(22, 146, 183, .85) 100%);
-    // background-color: #FFFFFF;
-    // border: 1px solid #E5E5E5;
+    // background: linear-gradient(-180deg, rgba(2, 181, 157, .85) 2%, rgba(22, 146, 183, .85) 100%);
+    // background-image: linear-gradient(-180deg, rgb(255, 195, 0) 2%, rgb(255, 195, 0) 100%);
+
+    background-color: #FFFFFF;
+    border: 1px solid #E5E5E5;
     // color: #646464;
 
     dt {
@@ -29,10 +31,19 @@
       cursor: pointer;
 
       &:hover {
-        background: rgba(255, 255, 255, .2);
+        // background: rgba(255, 255, 255, .2);
+        background: rgba(255, 150, 0, 0.08);
+        color: #222222;
+        font-weight: bold;
 
         &>i {
-          opacity: 1;
+          // opacity: 1;
+          font-weight: normal;
+        }
+
+        &>.arrow {
+          border-bottom-color: #222222;
+          border-right-color: #222222;
         }
       }
     }
@@ -42,7 +53,7 @@
         font-family: 'meituan';
         font-size: 14px;
         font-style: normal;
-        opacity: 0.3;
+        // opacity: 0.3;
         margin-right: 11px;
 
         &:before {
@@ -55,107 +66,130 @@
       .food {
         &:before {
           content: "\e622";
+          color: #FF8200;
         }
       }
 
       .takeout {
         &:before {
           content: "\e630";
+          color: #FFB500;
         }
       }
 
       .hotel {
         &:before {
           content: "\e62a";
+          color: #9B5E3E;
         }
       }
 
       .homestay {
         &:before {
           content: "\e631";
+          color: #FFB500;
         }
       }
 
       .movie {
         &:before {
           content: "\e62c";
+          color: #FF3D00;
           position: relative;
-          left: -2px;
+          left: -3px;
         }
       }
 
       .airport {
         &:before {
           content: "\e632";
+          color: #03A9F4;
         }
       }
 
       .ktv {
         &:before {
           content: "\e627";
+          color: #00BF96;
         }
       }
 
       .life {
         &:before {
           content: "\e633";
+          color: #00BF96;
         }
       }
 
       .hair {
         &:before {
           content: "\e626";
-          transform: scale(0.7);
+          color: #FF4081;
+          transform: scale(0.8);
+          position: relative;
+          left: -3px;
         }
       }
 
       .marry {
         &:before {
           content: "\e629";
+          color: #FF4081;
+
         }
       }
 
       .offspring {
         &:before {
           content: "\e623";
+          color: #FF4081;
+          position: relative;
+          left: -1px;
         }
       }
 
       .sport {
         &:before {
           content: "\e62b";
+          color: #03A9F4;
         }
       }
 
       .furniture {
         &:before {
           content: "\e625";
+          color: #00BF96;
         }
       }
 
       .study {
         &:before {
           content: "\e624";
+          color: #00BF96;
         }
       }
 
       .health {
         &:before {
           content: "\e628";
+          color: #03A9F4;
         }
       }
 
       .bar {
         &:before {
           content: "\e621";
+          color: #00BF96;
         }
       }
 
       .arrow {
         width: 4px;
         height: 4px;
-        border-bottom: 1px solid #fff;
-        border-right: 1px solid #fff;
+        // border-bottom: 1px solid #fff;
+        // border-right: 1px solid #fff;
+        border-bottom: 1px solid #BFBFBF;
+        border-right: 1px solid #BFBFBF;
         transform: rotate(-45deg);
         display: block;
         position: absolute;
@@ -194,7 +228,8 @@
         cursor: pointer;
 
         &:hover {
-          color: #31BBAC;
+          // color: #31BBAC;
+          color: #FFC300;
         }
       }
     }

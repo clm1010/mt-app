@@ -13,6 +13,7 @@
 
 <script>
 export default {
+  name: 'User',
   data() {
     return {
       user: ''
