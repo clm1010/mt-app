@@ -28,7 +28,8 @@ export default {
     Artistic
   },
   data() {
-    return {}
+    return {
+    }
   }
 }
 </script>
