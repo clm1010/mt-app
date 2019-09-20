@@ -4,7 +4,7 @@ import Redis from 'koa-redis'
 import nodeMailer from 'nodemailer'
 import User from '../dbs/models/users'
 import Email from '../dbs/config'
-// import Passport from './utils/passport'
+import Passport from './utils/passport'
 import axios from './utils/axios'
 
 // 创建路由
@@ -87,30 +87,30 @@ router.post('/signup', async (ctx) => {
 })
 
 /** 登录接口 */
-// router.post('/signin', async (ctx, next) => {
-//   return Passport.authenticate('local', (err, user, info, status) => {
-//     if (err) {
-//       ctx.body = {
-//         code: -1,
-//         msg: err
-//       }
-//     } else {
-//       if (user) {
-//         ctx.body = {
-//           code: 0,
-//           msg: '登录成功！',
-//           user
-//         }
-//         return ctx.login(user)
-//       } else {
-//         ctx.body = {
-//           code: 1,
-//           msg: info
-//         }
-//       }
-//     }
-//   })(ctx, next)
-// })
+router.post('/signin', async (ctx, next) => {
+  return Passport.authenticate('local', (err, user, info, status) => {
+    if (err) {
+      ctx.body = {
+        code: -1,
+        msg: err
+      }
+    } else {
+      if (user) {
+        ctx.body = {
+          code: 0,
+          msg: '登录成功！',
+          user
+        }
+        return ctx.login(user)
+      } else {
+        ctx.body = {
+          code: 1,
+          msg: info
+        }
+      }
+    }
+  })(ctx, next)
+})
 
 // 验证码 验证
 router.post('/verify', async (ctx, next) => {

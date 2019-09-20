@@ -17,7 +17,9 @@ module.exports = {
   plugins: ['prettier'],
   // add your custom rules here
   rules: {
+    'prettier/prettier': 'error',
     'nuxt/no-cjs-in-config': 'off',
-    'no-lonely-if': 0
+    'no-lonely-if': 0,
+    'require-await': 0
   }
 }
