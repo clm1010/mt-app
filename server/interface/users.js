@@ -65,7 +65,7 @@ router.post('/signup', async (ctx) => {
 
   if (nuser) {
     // 登录
-    const res = await axios.post('/users/sigin', { username, password })
+    const res = await axios.post('/users/signin', { username, password })
     if (res.data && res.data.code === 0) {
       ctx.body = {
         code: 0,

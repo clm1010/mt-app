@@ -28,7 +28,7 @@
             type="email"
             placeholder="请输入邮箱"
           ></el-input>
-          <el-button plain round size="mini" @click="sendMeg('regForm')"
+          <el-button plain round size="mini" @click="sendMeg"
             >发送验证码</el-button
           >
           <span class="status">{{ statusMsg }}</span>
@@ -71,6 +71,7 @@
   </div>
 </template>
 <script>
+import CryptoJS from 'crypto-js'
 export default {
   // 选择自定义模板
   layout: 'blank',
@@ -121,7 +122,7 @@ export default {
   },
   methods: {
     /** 发送验证码 */
-    sendMeg(formName) {
+    sendMeg() {
       const self = this
       let namePass
       let emailPass
@@ -129,22 +130,20 @@ export default {
         return false
       }
 
-      this.$refs[formName].validateField('name', (valid) => {
+      this.$refs['regForm'].validateField('name', (valid) => {
         namePass = valid
       })
       self.statusMsg = ''
       if (namePass) {
         return false
       }
-      this.$refs[formName].validateField('email', (valid) => {
+      this.$refs['regForm'].validateField('email', (valid) => {
         emailPass = valid
       })
       if (!namePass && !emailPass) {
-        console.log(encodeURIComponent(self.regForm.name))
-        console.log(self.regForm.email)
         self.$axios
           .post('/users/verify', {
-            username: encodeURIComponent(self.regForm.name),
+            username: window.encodeURIComponent(self.regForm.name),
             email: self.regForm.email
           })
           .then(({ status, data }) => {
@@ -155,6 +154,7 @@ export default {
                 self.statusMsg = `验证码已发送,剩余${count--}秒`
                 if (count === 0) {
                   clearInterval(self.timerid)
+                  self.statusMsg = ''
                 }
               }, 1000)
             } else {
@@ -164,20 +164,32 @@ export default {
       }
     },
     registerForm(formName) {
+      const self = this
       // this.$refs[formName].resetFields()
       // this.$refs[formName].clearValidate()
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          this.$message({
-            type: 'success',
-            message: '注册成功！'
-          })
-        } else {
-          // this.$message({
-          //   type: 'error',
-          //   message: '注册失败！'
-          // })
-          return false
+          self.$axios
+            .post('/users/signup', {
+              username: window.encodeURIComponent(self.regForm.name),
+              password: CryptoJS.MD5(self.regForm.pwd).toString(),
+              email: self.regForm.email,
+              code: self.regForm.code
+            })
+            .then(({ status, data }) => {
+              if (status === 200) {
+                if (data && data.code === 0) {
+                  location.href = '/login'
+                } else {
+                  self.error = data.msg
+                }
+              } else {
+                self.error = `服务器出错，错误码:${status}`
+              }
+              setTimeout(function() {
+                self.error = ''
+              }, 1500)
+            })
         }
       })
     }
