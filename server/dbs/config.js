@@ -16,30 +16,31 @@ export default {
   smtp: {
     // 只读host
     get host() {
-      // return 'smtp.qq.com'
-      return 'smtp.163.com'
+      return 'smtp.qq.com'
+      // return 'smtp.163.com'
     },
     get user() {
-      // return '102782438@qq.com'
-      return 'limin_chu@163.com'
+      return '102782438@qq.com'
+      // return 'limin_chu@163.com'
     },
     get pass() {
-      return 'clm1010'
-    }
-  },
-  /** 邮箱验证码 */
-  get code() {
-    return () => {
-      return Math.random()
-        .toString(16)
-        .slice(2, 6)
-        .toUpperCase()
-    }
-  },
-  /** 过期时间 */
-  get expire() {
-    return () => {
-      return new Date().getTime() + 60 * 60 * 1000
+      // return 'clm1010'
+      return 'wfictqtrltbncadg'
+    },
+    /** 邮箱验证码 */
+    get code() {
+      return () => {
+        return Math.random()
+          .toString(16)
+          .slice(2, 6)
+          .toUpperCase()
+      }
+    },
+    /** 过期时间 */
+    get expire() {
+      return () => {
+        return new Date().getTime() + 60 * 60 * 1000
+      }
     }
   }
 }

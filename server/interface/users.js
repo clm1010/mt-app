@@ -112,7 +112,7 @@ router.post('/signin', async (ctx, next) => {
   })(ctx, next)
 })
 
-// 验证码 验证
+/** 验证码 验证 */
 router.post('/verify', async (ctx, next) => {
   const username = ctx.request.body.username
   const saveExpire = await Store.hget(`nodemail:${username}`, 'expire')
@@ -133,5 +133,65 @@ router.post('/verify', async (ctx, next) => {
       pass: Email.smtp.pass
     }
   })
-  return transporter
+  const ko = {
+    code: Email.smtp.code(),
+    expire: Email.smtp.expire(),
+    email: ctx.request.body.email,
+    user: ctx.request.body.username
+  }
+  const mailOptions = {
+    from: `"认证邮件"<${Email.smtp.user}>`,
+    to: ko.email,
+    subject: '《美团网全栈实战》注册码',
+    html: `您在《美团网全栈实战》课程中注册，您的邀请码是${ko.code}`
+  }
+
+  await transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      return console.log('error')
+    } else {
+      Store.hmset(
+        `nodemail:${ko.user}`,
+        'code',
+        ko.code,
+        'expire',
+        ko.expire,
+        'email',
+        ko.email
+      )
+    }
+  })
+
+  ctx.body = {
+    code: 0,
+    msg: '验证码已发送，可能会有延时，有效期1分钟'
+  }
 })
+
+/** 退出登录 */
+router.get('/exit', async (ctx, next) => {
+  await ctx.logout()
+  if (!ctx.isAuthenticated()) {
+    ctx.body = {
+      code: -1
+    }
+  }
+})
+
+/** 获取用户 */
+router.get('/getUser', async (ctx, next) => {
+  if (ctx.isAuthenticated()) {
+    const { username, email } = ctx.session.passport.user
+    ctx.body = {
+      user: username,
+      email
+    }
+  } else {
+    ctx.body = {
+      user: '',
+      email: ''
+    }
+  }
+})
+
+export default router

@@ -28,7 +28,7 @@
             type="email"
             placeholder="请输入邮箱"
           ></el-input>
-          <el-button plain round size="mini" @click="sendMeg"
+          <el-button plain round size="mini" @click="sendMeg('regForm')"
             >发送验证码</el-button
           >
           <span class="status">{{ statusMsg }}</span>
@@ -121,7 +121,48 @@ export default {
   },
   methods: {
     /** 发送验证码 */
-    sendMeg() {},
+    sendMeg(formName) {
+      const self = this
+      let namePass
+      let emailPass
+      if (self.timerid) {
+        return false
+      }
+
+      this.$refs[formName].validateField('name', (valid) => {
+        namePass = valid
+      })
+      self.statusMsg = ''
+      if (namePass) {
+        return false
+      }
+      this.$refs[formName].validateField('email', (valid) => {
+        emailPass = valid
+      })
+      if (!namePass && !emailPass) {
+        console.log(encodeURIComponent(self.regForm.name))
+        console.log(self.regForm.email)
+        self.$axios
+          .post('/users/verify', {
+            username: encodeURIComponent(self.regForm.name),
+            email: self.regForm.email
+          })
+          .then(({ status, data }) => {
+            if (status === 200 && data && data.code === 0) {
+              let count = 60
+              self.statusMsg = `验证码已发送,剩余${count--}秒`
+              self.timerid = setInterval(function() {
+                self.statusMsg = `验证码已发送,剩余${count--}秒`
+                if (count === 0) {
+                  clearInterval(self.timerid)
+                }
+              }, 1000)
+            } else {
+              self.statusMsg = data.msg
+            }
+          })
+      }
+    },
     registerForm(formName) {
       // this.$refs[formName].resetFields()
       // this.$refs[formName].clearValidate()
