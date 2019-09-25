@@ -17,8 +17,19 @@
       <div class="form">
         <h4 v-if="error" class="tips"><i />{{ error }}</h4>
         <p><span>账号登录</span></p>
-        <el-input v-model="username" prefix-icon="profile" />
-        <el-input v-model="password" prefix-icon="password" type="password" />
+        <el-input
+          v-model="username"
+          prefix-icon="profile"
+          placeholder="请输入账号"
+          @input="error = ''"
+        />
+        <el-input
+          v-model="password"
+          prefix-icon="password"
+          placeholder="请输入密码"
+          type="password"
+          @input="error = ''"
+        />
         <div class="foot">
           <el-checkbox v-model="checked">
             7天内自动登录
@@ -34,6 +45,7 @@
 </template>
 
 <script>
+import CryptoJS from 'crypto-js'
 export default {
   // 选择自定义模板
   layout: 'blank',
@@ -47,7 +59,31 @@ export default {
     }
   },
   methods: {
-    login() {}
+    login() {
+      const self = this
+      if (!self.username) {
+        return (self.error = '请输入用户名！')
+      }
+      if (!self.password) {
+        return (self.error = '请输入密码！')
+      }
+      self.$axios
+        .post('/users/signin', {
+          username: window.encodeURIComponent(self.username),
+          password: CryptoJS.MD5(self.password).toString()
+        })
+        .then(({ status, data }) => {
+          if (status === 200) {
+            if (data && data.code === 0) {
+              location.href = '/'
+            } else {
+              self.error = data.msg
+            }
+          } else {
+            self.error = '服务器出错！'
+          }
+        })
+    }
   }
 }
 </script>
