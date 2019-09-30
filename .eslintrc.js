@@ -21,6 +21,7 @@ module.exports = {
     'nuxt/no-cjs-in-config': 'off',
     'no-lonely-if': 0,
     'require-await': 0,
-    'dot-notation': 0
+    'dot-notation': 0,
+    'no-console': 0
   }
 }

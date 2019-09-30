@@ -106,9 +106,7 @@ export default {
         self.isFocus = false
       }, 200)
     },
-    handleInput() {
-      console.log('input')
-    }
+    handleInput() {}
   }
 }
 </script>
