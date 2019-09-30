@@ -22,6 +22,7 @@ module.exports = {
     'no-lonely-if': 0,
     'require-await': 0,
     'dot-notation': 0,
-    'no-console': 0
+    'no-console': 0,
+    'vue/attributes-order': 0
   }
 }
