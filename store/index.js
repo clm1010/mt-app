@@ -21,6 +21,11 @@ const store = () =>
           'geo/setPosition',
           status === 200 ? { city, province } : { city: '', province: '' }
         )
+        const {
+          status: status2,
+          data: { menu }
+        } = await app.$axios.get('/geo/menu')
+        commit('home/setMenu', status2 === 200 ? menu : [])
       }
     }
   })
